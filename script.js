@@ -12,6 +12,35 @@ function computerPlay() {
     }
 }
 
-const result = computerPlay();
+function playRound(playerSelection, computerSelection) {
+    let player = playerSelection.toLowerCase();
+    let computer = computerSelection.toLowerCase();
+    let result = `Computer Choice: ${computer.charAt(0).toUpperCase() + computer.substr(1)}\nPlayer Choice: ${player.charAt(0).toUpperCase() + player.substr(1)}\n\n`;
+    if (player === computer) {
+        return result + `The Game is Draw! Both you and the Computer chose ${player.charAt(0).toUpperCase() + player.substr(1)}!`;
+    } else if (isComputerWinner(player, computer)) {
+        return result + `You Lose! ${computer.charAt(0).toUpperCase() + computer.substr(1)} beats ${player.charAt(0).toUpperCase() + player.substr(1)}`;
+    } else {
+        return result + `You Won! ${player.charAt(0).toUpperCase() + player.substr(1)} beats ${computer.charAt(0).toUpperCase() + computer.substr(1)}`;
+    }
+}
+
+function isComputerWinner(playerSelection, computerSelection) {
+    let player = playerSelection.toLowerCase();
+    let computer = computerSelection.toLowerCase();
+
+    if (player === 'rock' && computer === 'paper') {
+        return true;
+    } else if (player === 'paper' && computer === 'scissor') {
+        return true;
+    } else if (player === 'scissor' && computer === 'rock') {
+        return true;
+    }
+    return false;
+}
+
+const computerSelection = computerPlay();
+const playerSelection = prompt("Enter Rock, Paper or Scissor");
+const result = playRound(playerSelection, computerSelection);
 console.log(result);
 alert(result);
