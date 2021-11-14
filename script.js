@@ -13,7 +13,7 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let player = playerSelection.toLowerCase();
+    let player = playerSelection.toLowerCase().trim();
     let computer = computerSelection.toLowerCase();
     let result = `Computer Choice: ${computer.charAt(0).toUpperCase() + computer.substr(1)}\nPlayer Choice: ${player.charAt(0).toUpperCase() + player.substr(1)}\n\n`;
     if (player === computer) {
@@ -40,7 +40,7 @@ function isComputerWinner(playerSelection, computerSelection) {
 }
 
 const computerSelection = computerPlay();
-const playerSelection = prompt("Enter Rock, Paper or Scissor");
+const playerSelection = prompt("Enter Rock, Paper or Scissors");
 const result = playRound(playerSelection, computerSelection);
 console.log(result);
 alert(result);
